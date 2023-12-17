@@ -34,7 +34,7 @@ const CreateGameCampain = () => {
   return (
     <div style={{ minHeight: "100%" }}>
       <span>ConfigGame</span>
-      <Steps current={current} items={items} />
+      <Steps current={current} items={items} className="mt-3" />
       <div>{steps[current].content}</div>
       <div style={{ marginTop: 24 }}>
         {current > 0 && (
