@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import { DesktopOutlined, FileOutlined, PieChartOutlined, PlusOutlined } from "@ant-design/icons";
-import { Avatar, Breadcrumb, Button, Divider, Layout, Menu, Popover, theme } from "antd";
+import {
+  DesktopOutlined,
+  FileOutlined,
+  PieChartOutlined,
+  PlusOutlined,
+  UnorderedListOutlined,
+  HomeOutlined,
+} from "@ant-design/icons";
+import { Avatar, Button, Divider, Layout, Menu, Popover, theme } from "antd";
 import ConfigGame from "../CreateGameCampain";
 import Profile from "../Profile";
 import SubPage from "../SubPage";
-import { PlusOneOutlined } from "@mui/icons-material";
 import { createUseStyles } from "react-jss";
+import ListGameCampain from "../ListGameCampain";
+import HomePage from "../HomePage";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -29,6 +37,12 @@ const items: MenuItem[] = [
     content: <></>,
   },
   {
+    key: "homepage",
+    icon: <HomeOutlined />,
+    label: "Home page",
+    content: <HomePage />,
+  },
+  {
     key: "creategame",
     icon: <PieChartOutlined />,
     label: "Create game",
@@ -39,6 +53,12 @@ const items: MenuItem[] = [
     icon: <DesktopOutlined />,
     label: "Profile",
     content: <Profile />,
+  },
+  {
+    key: "listgamecompain",
+    icon: <UnorderedListOutlined />,
+    label: "List game compain",
+    content: <ListGameCampain />,
   },
   {
     key: "sub",
@@ -73,7 +93,7 @@ const itemsMap: { [key: string]: MenuItem } = itemsFlat.reduce((acc, item) => {
 console.log("🚀 ~ file: index.tsx:52 ~ constitemsMap:{[key:string]:MenuItem}=items.reduce ~ itemsMap:", itemsMap);
 const IndexPage = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [selectedPageKey, setSelectedPageKey] = useState("creategame");
+  const [selectedPageKey, setSelectedPageKey] = useState("homepage");
   console.log("🚀 ~ file: index.tsx:65 ~ IndexPage ~ selectedPageKey:", selectedPageKey);
 
   const {
@@ -88,7 +108,7 @@ const IndexPage = () => {
         <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
-          defaultSelectedKeys={["creategame"]}
+          defaultSelectedKeys={["homepage"]}
           onSelect={(e) => {
             setSelectedPageKey(e.key);
           }}
